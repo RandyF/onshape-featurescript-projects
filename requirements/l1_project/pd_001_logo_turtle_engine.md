@@ -1,7 +1,7 @@
 # PD-001: LOGO Turtle Engine
 
 | Field | Value |
-| :--- | :--- |
+| --- | --- |
 | **Document ID** | PD-001 |
 | **Document Title** | Project Definition: LOGO Turtle Engine |
 | **Document Type** | Level 1: Sub-Project Definition (PD) |
@@ -36,12 +36,12 @@ The LOGO Turtle Engine is a sub-project that implements the vintage LOGO scripti
 ### 1.4 Primary Deliverables
 
 | Deliverable | Description | Priority |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | LOGO Turtle Engine Core Module | Centralized engine processing LOGO commands and managing turtle state | High |
 | Path Recording System | Accumulation of line segments from FORWARD commands into composite path | High |
-| ForwardCommand Implementation | Move turtle position along direction by specified distance | High |
-| RightCommand Implementation | Rotate turtle orientation 90 degrees clockwise | Medium |
-| LeftCommand Implementation | Rotate turtle orientation 90 degrees counter-clockwise | Medium |
+| ForwardCommand Implementation | Move turtle along direction by specified distance value with configurable angle rotation | High |
+| RightCommand Implementation | Rotate turtle orientation by configurable angle clockwise (float parameter) | Medium |
+| LeftCommand Implementation | Rotate turtle orientation by configurable angle counter-clockwise (float parameter) | Medium |
 
 ### 1.5 Project Constraints
 
@@ -59,7 +59,6 @@ The LOGO Turtle Engine is a sub-project that implements the vintage LOGO scripti
 
 ---
 
-
 ## 2. Project Scope
 
 ### 2.1 In-Scope Requirements
@@ -67,17 +66,20 @@ The LOGO Turtle Engine is a sub-project that implements the vintage LOGO scripti
 The LOGO Turtle Engine sub-project establishes the core turtle navigation system:
 
 **Core Turtle Functions:**
-- **FORWARD Command Implementation:** Move turtle along direction vector by specified distance value
-- **RIGHT Command Implementation:** Rotate turtle orientation 90° clockwise around vertical axis (π/2 radians)
-- **LEFT Command Implementation:** Rotate turtle orientation 90° counter-clockwise around vertical axis (-π/2 radians)
+
+- **FORWARD Command Implementation:** Move turtle along direction vector by specified distance value with optional angle rotation parameter
+- **RIGHT Command Implementation:** Rotate turtle orientation by configurable angle clockwise (float parameter, default π/2 radians)
+- **LEFT Command Implementation:** Rotate turtle orientation by configurable angle counter-clockwise (float parameter, default -π/2 radians)
 
 **State Management:**
+
 - Maintain turtle position as a 3D point (x, y, z coordinates)
 - Maintain turtle orientation as a direction vector or angle representation
 - Concatenate path segments from multiple FORWARD commands into composite 3D path
 - Provide optional starting point parameter with origin default behavior
 
 **Output Format:**
+
 - Primary output is the recorded composite 3D path defined by sequential line segments
 - Path should be accessible for further OnShape modeling operations
 - Record each forward movement as a separate segment in the cumulative path
@@ -86,20 +88,18 @@ The LOGO Turtle Engine sub-project establishes the core turtle navigation system
 
 As this initial sub-project:
 
-- RIGHT and LEFT commands are implemented but may not support complex rotation angles beyond 90° increments
 - Flat Surface Drawing mode is out of scope (reserved for PD-002)
 - Path Following Modes are out of scope (reserved for PD-003)
 - Arbitrary LOGO graphics primitives (PENUP, PENDOWN, CIRCLE) are not in scope
 
 ---
 
-
 ## 3. Budget and Resource Allocation
 
 ### 3.1 Project Budget
 
 | Category | Budget Allocated | Notes |
-| :--- | :--- | :--- |
+| --- | --- | --- |
 | **Development** | $0.00 | Open-ended hobby library (see PD-000) |
 | **Materials / Components** | $0.00 | No physical hardware required |
 | **Testing & Validation** | $0.00 | In-CAD verification per sub-project |
@@ -110,11 +110,10 @@ As this initial sub-project:
 
 - **Account / Software:** Standard OnShape account with FeatureScript access (cloud-native execution)
 - **Documentation:** Lightweight Development Process guidelines (LDP), L1 and L2 architecture requirements
-- **Dependencies:** 
+- **Dependencies:**
   - PD-000: OnShape FeatureScript Projects Library (parent project)
   - PD-002: Flat Surface Drawing Mode (future dependency for 2D shape path generation)
   - PD-003: Path Following Modes (future dependency for boundary following algorithms)
-- **Baseline Performance Metrics:** 
+- **Baseline Performance Metrics:**
   - Command execution time: ≤10ms per FORWARD/LEFT/RIGHT operation
-  - Memory usage: <50MB during feature regeneration
-
+  - Memory usage: &lt;50MB during feature regeneration
